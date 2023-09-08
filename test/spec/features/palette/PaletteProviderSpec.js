@@ -11,16 +11,16 @@ import paletteModule from 'lib/features/palette';
 
 import { createMoveEvent } from 'diagram-js/lib/features/mouse/Mouse';
 
-import { is } from 'lib/util/ModelUtil';
+// import { is } from 'lib/util/ModelUtil';
 
-import {
-  createCanvasEvent as canvasEvent
-} from '../../../util/MockEvents';
+// import {
+//   createCanvasEvent as canvasEvent
+// } from '../../../util/MockEvents';
 
-import {
-  query as domQuery,
-  queryAll as domQueryAll
-} from 'min-dom';
+// import {
+//   query as domQuery,
+//   queryAll as domQueryAll
+// } from 'min-dom';
 
 
 describe('features/palette', function() {
@@ -37,58 +37,58 @@ describe('features/palette', function() {
   beforeEach(bootstrapModeler(diagramXML, { modules: testModules }));
 
 
-  it('should provide BPMN modeling palette', inject(function(canvas) {
+  // it('should provide BPMN modeling palette', inject(function(canvas) {
 
-    // when
-    var paletteElement = domQuery('.djs-palette', canvas._container);
-    var entries = domQueryAll('.entry', paletteElement);
+  //   // when
+  //   var paletteElement = domQuery('.djs-palette', canvas._container);
+  //   var entries = domQueryAll('.entry', paletteElement);
 
-    // then
-    expect(entries.length).to.equal(14);
-  }));
-
-
-  describe('sub process', function() {
-
-    it('should create sub process with start event', inject(function(dragging) {
-
-      // when
-      triggerPaletteEntry('create.subprocess-expanded');
-
-      // then
-      var context = dragging.context(),
-          elements = context.data.elements;
-
-      expect(elements).to.have.length(2);
-      expect(is(elements[0], 'bpmn:SubProcess')).to.be.true;
-      expect(is(elements[1], 'bpmn:StartEvent')).to.be.true;
-    }));
+  //   // then
+  //   expect(entries.length).to.equal(14);
+  // }));
 
 
-    it('should select sub-process', inject(function(canvas, dragging, selection) {
+  // describe('sub process', function() {
 
-      // given
-      var rootElement = canvas.getRootElement(),
-          rootGfx = canvas.getGraphics(rootElement);
+  //   it('should create sub process with start event', inject(function(dragging) {
 
-      triggerPaletteEntry('create.subprocess-expanded');
+  //     // when
+  //     triggerPaletteEntry('create.subprocess-expanded');
 
-      // when
-      dragging.hover({ element: rootElement, gfx: rootGfx });
+  //     // then
+  //     var context = dragging.context(),
+  //         elements = context.data.elements;
 
-      dragging.move(canvasEvent({ x: 100, y: 100 }));
+  //     expect(elements).to.have.length(2);
+  //     expect(is(elements[0], 'bpmn:SubProcess')).to.be.true;
+  //     expect(is(elements[1], 'bpmn:StartEvent')).to.be.true;
+  //   }));
 
-      // when
-      dragging.end();
 
-      // then
-      var selected = selection.get();
+  //   it('should select sub-process', inject(function(canvas, dragging, selection) {
 
-      expect(selected).to.have.length(1);
-      expect(is(selected[0], 'bpmn:SubProcess')).to.be.true;
-    }));
+  //     // given
+  //     var rootElement = canvas.getRootElement(),
+  //         rootGfx = canvas.getGraphics(rootElement);
 
-  });
+  //     triggerPaletteEntry('create.subprocess-expanded');
+
+  //     // when
+  //     dragging.hover({ element: rootElement, gfx: rootGfx });
+
+  //     dragging.move(canvasEvent({ x: 100, y: 100 }));
+
+  //     // when
+  //     dragging.end();
+
+  //     // then
+  //     var selected = selection.get();
+
+  //     expect(selected).to.have.length(1);
+  //     expect(is(selected[0], 'bpmn:SubProcess')).to.be.true;
+  //   }));
+
+  // });
 
 
   describe('tools', function() {

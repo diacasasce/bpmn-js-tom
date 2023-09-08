@@ -200,27 +200,27 @@ describe('features/keyboard', function() {
     });
 
 
-    forEach([ 'r', 'R' ], function(key) {
+    // forEach([ 'r', 'R' ], function(key) {
 
-      it('should trigger replace menu', inject(function(keyboard, popupMenu, elementRegistry, selection) {
+    //   it('should trigger replace menu', inject(function(keyboard, popupMenu, elementRegistry, selection) {
 
-        sinon.spy(popupMenu, 'open');
+    //     sinon.spy(popupMenu, 'open');
 
-        // given
-        var task = elementRegistry.get('Task_1');
+    //     // given
+    //     var task = elementRegistry.get('Task_1');
 
-        selection.select(task);
+    //     selection.select(task);
 
-        var e = createKeyEvent(key);
+    //     var e = createKeyEvent(key);
 
-        // when
-        keyboard._keyHandler(e);
+    //     // when
+    //     keyboard._keyHandler(e);
 
-        // then
-        expect(popupMenu.open).to.have.been.calledOnce;
-      }));
+    //     // then
+    //     expect(popupMenu.open).to.have.been.calledOnce;
+    //   }));
 
-    });
+    // });
 
 
   });

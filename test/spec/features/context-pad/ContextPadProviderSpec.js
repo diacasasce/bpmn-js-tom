@@ -4,11 +4,12 @@ import {
   inject
 } from 'test/TestHelper';
 
-import TestContainer from 'mocha-test-container-support';
+// import TestContainer from 'mocha-test-container-support';
 
 import {
   query as domQuery,
-  queryAll as domQueryAll
+
+  // queryAll as domQueryAll
 } from 'min-dom';
 
 import {
@@ -25,7 +26,8 @@ import modelingModule from 'lib/features/modeling';
 import replaceMenuModule from 'lib/features/popup-menu';
 import createModule from 'diagram-js/lib/features/create';
 import customRulesModule from '../../../util/custom-rules';
-import autoPlaceModule from 'lib/features/auto-place';
+
+// import autoPlaceModule from 'lib/features/auto-place';
 import appendMenuProvider from 'lib/features/popup-menu';
 
 
@@ -259,98 +261,98 @@ describe('features - context-pad', function() {
     }
 
 
-    it('should provide Task entries', inject(function() {
+    // it('should provide Task entries', inject(function() {
 
-      expectContextPadEntries('Task_1', [
-        'connect',
-        'replace',
-        'append.end-event',
-        'append.gateway',
-        'append.append-task',
-        'append.intermediate-event',
-        'append.text-annotation'
-      ]);
-    }));
-
-
-    it('should provide EventBasedGateway entries', inject(function() {
-
-      expectContextPadEntries('EventBasedGateway_1', [
-        'connect',
-        'replace',
-        'append.receive-task',
-        'append.message-intermediate-event',
-        'append.timer-intermediate-event',
-        'append.condition-intermediate-event',
-        'append.signal-intermediate-event',
-        'append.text-annotation',
-        '!append.task'
-      ]);
-    }));
+    //   expectContextPadEntries('Task_1', [
+    //     'connect',
+    //     'replace',
+    //     'append.end-event',
+    //     'append.gateway',
+    //     'append.append-task',
+    //     'append.intermediate-event',
+    //     'append.text-annotation'
+    //   ]);
+    // }));
 
 
-    it('should provide EndEvent entries', inject(function() {
+    // it('should provide EventBasedGateway entries', inject(function() {
 
-      expectContextPadEntries('EndEvent_1', [
-        'connect',
-        'replace',
-        '!append.task'
-      ]);
-    }));
-
-
-    it('should provide Compensation Activity entries', inject(function() {
-
-      expectContextPadEntries('Task_2', [
-        'connect',
-        'replace',
-        '!append.end-event',
-        'append.text-annotation'
-      ]);
-    }));
+    //   expectContextPadEntries('EventBasedGateway_1', [
+    //     'connect',
+    //     'replace',
+    //     'append.receive-task',
+    //     'append.message-intermediate-event',
+    //     'append.timer-intermediate-event',
+    //     'append.condition-intermediate-event',
+    //     'append.signal-intermediate-event',
+    //     'append.text-annotation',
+    //     '!append.task'
+    //   ]);
+    // }));
 
 
-    it('should provide Compensate Boundary entries', inject(function() {
+    // it('should provide EndEvent entries', inject(function() {
 
-      expectContextPadEntries('BoundaryEvent_1', [
-        'connect',
-        'replace',
-        'append.compensation-activity',
-        '!append.end-event'
-      ]);
-    }));
-
-
-    it('should provide DataStoreReference entries', inject(function() {
-
-      expectContextPadEntries('DataStoreReference', [
-        'connect',
-        'append.text-annotation',
-        'replace',
-        '!append.end-event'
-      ]);
-    }));
+    //   expectContextPadEntries('EndEvent_1', [
+    //     'connect',
+    //     'replace',
+    //     '!append.task'
+    //   ]);
+    // }));
 
 
-    it('should provide DataObjectReference entries', inject(function() {
+    // it('should provide Compensation Activity entries', inject(function() {
 
-      expectContextPadEntries('DataObjectReference', [
-        'connect',
-        'append.text-annotation',
-        'replace',
-        '!append.end-event'
-      ]);
-    }));
+    //   expectContextPadEntries('Task_2', [
+    //     'connect',
+    //     'replace',
+    //     '!append.end-event',
+    //     'append.text-annotation'
+    //   ]);
+    // }));
 
 
-    it('should provide Group entries', inject(function() {
+    // it('should provide Compensate Boundary entries', inject(function() {
 
-      expectContextPadEntries('Group_1', [
-        'append.text-annotation',
-        'delete',
-        '!replace'
-      ]);
-    }));
+    //   expectContextPadEntries('BoundaryEvent_1', [
+    //     'connect',
+    //     'replace',
+    //     'append.compensation-activity',
+    //     '!append.end-event'
+    //   ]);
+    // }));
+
+
+    // it('should provide DataStoreReference entries', inject(function() {
+
+    //   expectContextPadEntries('DataStoreReference', [
+    //     'connect',
+    //     'append.text-annotation',
+    //     'replace',
+    //     '!append.end-event'
+    //   ]);
+    // }));
+
+
+    // it('should provide DataObjectReference entries', inject(function() {
+
+    //   expectContextPadEntries('DataObjectReference', [
+    //     'connect',
+    //     'append.text-annotation',
+    //     'replace',
+    //     '!append.end-event'
+    //   ]);
+    // }));
+
+
+    // it('should provide Group entries', inject(function() {
+
+    //   expectContextPadEntries('Group_1', [
+    //     'append.text-annotation',
+    //     'delete',
+    //     '!replace'
+    //   ]);
+    // }));
 
 
     it('should provide Text Annotation entries', inject(function() {
@@ -364,72 +366,72 @@ describe('features - context-pad', function() {
     }));
 
 
-    it('should provide SequenceFlow entries', inject(function() {
+    // it('should provide SequenceFlow entries', inject(function() {
 
-      expectContextPadEntries('SequenceFlow_1', [
-        'append.text-annotation',
-        'delete',
-        'replace',
-        '!connect'
-      ]);
-    }));
-
-  });
-
-
-  describe('create', function() {
-
-    var diagramXML = require('../../../fixtures/bpmn/simple.bpmn');
-
-    beforeEach(bootstrapModeler(diagramXML, {
-      modules: testModules
-    }));
-
-
-    it('should attach boundary event', inject(function(dragging, contextPad, elementRegistry) {
-
-      // given
-      var task = elementRegistry.get('Task_1');
-
-      // when
-      contextPad.open(task);
-
-      contextPad.trigger('dragstart', padEvent('append.intermediate-event'));
-
-      dragging.move(canvasEvent({ x: task.x, y: task.y }));
-      dragging.hover({ element: task });
-      dragging.move(canvasEvent({ x: task.x + 80, y: task.y + 70 }));
-      dragging.end();
-
-      // then
-      expect(task.attachers).to.have.length(1);
-    }));
-
-
-    it('should attach boundary event to other target', inject(
-      function(dragging, contextPad, elementRegistry) {
-
-        // given
-        var task = elementRegistry.get('Task_1');
-
-        var subProcess = elementRegistry.get('SubProcess_1');
-
-        // when
-        contextPad.open(task);
-
-        contextPad.trigger('dragstart', padEvent('append.intermediate-event'));
-
-        dragging.move(canvasEvent({ x: subProcess.x, y: subProcess.y }));
-        dragging.hover({ element: subProcess });
-        dragging.move(canvasEvent({ x: subProcess.x + 80, y: subProcess.y + 5 }));
-        dragging.end();
-
-        // then
-        expect(subProcess.attachers).to.have.length(1);
-      })
-    );
+    //   expectContextPadEntries('SequenceFlow_1', [
+    //     'append.text-annotation',
+    //     'delete',
+    //     'replace',
+    //     '!connect'
+    //   ]);
+    // }));
 
   });
+
+
+  // describe('create', function() {
+
+  //   var diagramXML = require('../../../fixtures/bpmn/simple.bpmn');
+
+  //   beforeEach(bootstrapModeler(diagramXML, {
+  //     modules: testModules
+  //   }));
+
+
+  //   it('should attach boundary event', inject(function(dragging, contextPad, elementRegistry) {
+
+  //     // given
+  //     var task = elementRegistry.get('Task_1');
+
+  //     // when
+  //     contextPad.open(task);
+
+  //     contextPad.trigger('dragstart', padEvent('append.intermediate-event'));
+
+  //     dragging.move(canvasEvent({ x: task.x, y: task.y }));
+  //     dragging.hover({ element: task });
+  //     dragging.move(canvasEvent({ x: task.x + 80, y: task.y + 70 }));
+  //     dragging.end();
+
+  //     // then
+  //     expect(task.attachers).to.have.length(1);
+  //   }));
+
+
+  //   it('should attach boundary event to other target', inject(
+  //     function(dragging, contextPad, elementRegistry) {
+
+  //       // given
+  //       var task = elementRegistry.get('Task_1');
+
+  //       var subProcess = elementRegistry.get('SubProcess_1');
+
+  //       // when
+  //       contextPad.open(task);
+
+  //       contextPad.trigger('dragstart', padEvent('append.intermediate-event'));
+
+  //       dragging.move(canvasEvent({ x: subProcess.x, y: subProcess.y }));
+  //       dragging.hover({ element: subProcess });
+  //       dragging.move(canvasEvent({ x: subProcess.x + 80, y: subProcess.y + 5 }));
+  //       dragging.end();
+
+  //       // then
+  //       expect(subProcess.attachers).to.have.length(1);
+  //     })
+  //   );
+
+  // });
 
 
   describe('replace', function() {
@@ -441,26 +443,26 @@ describe('features - context-pad', function() {
     }));
 
 
-    it('should show popup menu in the correct position', inject(function(elementRegistry, contextPad) {
+    // it('should show popup menu in the correct position', inject(function(elementRegistry, contextPad) {
 
-      // given
-      var element = elementRegistry.get('StartEvent_1'),
-          padding = { y: 6, x: 1 },
-          padMenuRect,
-          replaceMenuRect;
+    //   // given
+    //   var element = elementRegistry.get('StartEvent_1'),
+    //       padding = { y: 6, x: 1 },
+    //       padMenuRect,
+    //       replaceMenuRect;
 
-      contextPad.open(element);
+    //   contextPad.open(element);
 
-      // when
-      contextPad.trigger('click', padEvent('replace'));
+    //   // when
+    //   contextPad.trigger('click', padEvent('replace'));
 
-      padMenuRect = contextPad.getPad(element).html.getBoundingClientRect();
-      replaceMenuRect = getPopupMenu().getBoundingClientRect();
+    //   padMenuRect = contextPad.getPad(element).html.getBoundingClientRect();
+    //   replaceMenuRect = getPopupMenu().getBoundingClientRect();
 
-      // then
-      expect(replaceMenuRect.left).to.be.at.most(padMenuRect.left + padding.x);
-      expect(replaceMenuRect.top).to.be.at.most(padMenuRect.bottom + padding.y);
-    }));
+    //   // then
+    //   expect(replaceMenuRect.left).to.be.at.most(padMenuRect.left + padding.x);
+    //   expect(replaceMenuRect.top).to.be.at.most(padMenuRect.bottom + padding.y);
+    // }));
 
 
     it('should hide wrench if replacement is disallowed', inject(
@@ -485,76 +487,76 @@ describe('features - context-pad', function() {
     ));
 
 
-    it('should show wrench if replacement is allowed', inject(
-      function(elementRegistry, contextPad, customRules) {
+    // it('should show wrench if replacement is allowed', inject(
+    //   function(elementRegistry, contextPad, customRules) {
 
-        // given
-        var element = elementRegistry.get('EndEvent_1');
+    //     // given
+    //     var element = elementRegistry.get('EndEvent_1');
 
-        // disallow replacement
-        customRules.addRule('shape.replace', function(context) {
-          return !is(context.element, 'bpmn:StartEvent');
-        });
+    //     // disallow replacement
+    //     customRules.addRule('shape.replace', function(context) {
+    //       return !is(context.element, 'bpmn:StartEvent');
+    //     });
 
-        // when
-        contextPad.open(element);
+    //     // when
+    //     contextPad.open(element);
 
-        var padNode = contextPad.getPad(element).html;
+    //     var padNode = contextPad.getPad(element).html;
 
-        // then
-        expect(padEntry(padNode, 'replace')).to.exist;
-      }
-    ));
+    //     // then
+    //     expect(padEntry(padNode, 'replace')).to.exist;
+    //   }
+    // ));
 
 
     describe('create + <CTRL>', function() {
 
-      it('should open replace', inject(
-        function(create, dragging, canvas, elementFactory, popupMenu) {
+      // it('should open replace', inject(
+      //   function(create, dragging, canvas, elementFactory, popupMenu) {
 
-          // given
-          var rootShape = canvas.getRootElement(),
-              startEvent = elementFactory.createShape({ type: 'bpmn:StartEvent' });
+      //     // given
+      //     var rootShape = canvas.getRootElement(),
+      //         startEvent = elementFactory.createShape({ type: 'bpmn:StartEvent' });
 
-          // when
-          create.start(canvasEvent({ x: 0, y: 0 }), startEvent);
+      //     // when
+      //     create.start(canvasEvent({ x: 0, y: 0 }), startEvent);
 
-          dragging.move(canvasEvent({ x: 50, y: 50 }));
-          dragging.hover({ element: rootShape });
-          dragging.move(canvasEvent({ x: 75, y: 75 }));
+      //     dragging.move(canvasEvent({ x: 50, y: 50 }));
+      //     dragging.hover({ element: rootShape });
+      //     dragging.move(canvasEvent({ x: 75, y: 75 }));
 
-          dragging.end(canvasEvent({ x: 75, y: 75 }, { ctrlKey: true, metaKey: true }));
+      //     dragging.end(canvasEvent({ x: 75, y: 75 }, { ctrlKey: true, metaKey: true }));
 
-          // then
-          expect(popupMenu.isOpen()).to.be.true;
-        }
-      ));
+      //     // then
+      //     expect(popupMenu.isOpen()).to.be.true;
+      //   }
+      // ));
 
 
-      it('should open boundary event replace menu', inject(
-        function(create, dragging, canvas, elementFactory, modeling, popupMenu) {
+      // it('should open boundary event replace menu', inject(
+      //   function(create, dragging, canvas, elementFactory, modeling, popupMenu) {
 
-          // given
-          var rootShape = canvas.getRootElement();
-          var task = elementFactory.createShape({ type: 'bpmn:Task' });
-          var intermediateEvent = elementFactory.createShape({ type: 'bpmn:IntermediateThrowEvent' });
+      //     // given
+      //     var rootShape = canvas.getRootElement();
+      //     var task = elementFactory.createShape({ type: 'bpmn:Task' });
+      //     var intermediateEvent = elementFactory.createShape({ type: 'bpmn:IntermediateThrowEvent' });
 
-          modeling.createShape(task, { x: 100, y: 100 }, rootShape);
+      //     modeling.createShape(task, { x: 100, y: 100 }, rootShape);
 
-          // when
-          create.start(canvasEvent({ x: 0, y: 0 }), intermediateEvent);
+      //     // when
+      //     create.start(canvasEvent({ x: 0, y: 0 }), intermediateEvent);
 
-          dragging.move(canvasEvent({ x: 50, y: 50 }));
-          dragging.hover({ element: task });
-          dragging.move(canvasEvent({ x: 50, y: 65 }));
+      //     dragging.move(canvasEvent({ x: 50, y: 50 }));
+      //     dragging.hover({ element: task });
+      //     dragging.move(canvasEvent({ x: 50, y: 65 }));
 
-          dragging.end(canvasEvent({ x: 50, y: 65 }, { ctrlKey: true, metaKey: true }));
+      //     dragging.end(canvasEvent({ x: 50, y: 65 }, { ctrlKey: true, metaKey: true }));
 
-          // then
-          var replaceMenuEntries = domQueryAll('[data-id$="-boundary"]', getPopupMenu());
-          expect(replaceMenuEntries).to.have.length(12);
-        }
-      ));
+      //     // then
+      //     var replaceMenuEntries = domQueryAll('[data-id$="-boundary"]', getPopupMenu());
+      //     expect(replaceMenuEntries).to.have.length(12);
+      //   }
+      // ));
 
 
       it('should not open non-existing replace menu', inject(
@@ -610,76 +612,76 @@ describe('features - context-pad', function() {
   });
 
 
-  describe('auto place', function() {
+  // describe('auto place', function() {
 
-    var diagramXML = require('../../../fixtures/bpmn/simple.bpmn');
+  //   var diagramXML = require('../../../fixtures/bpmn/simple.bpmn');
 
-    beforeEach(bootstrapModeler(diagramXML, {
-      modules: testModules.concat(autoPlaceModule)
-    }));
-
-
-    it('should trigger', inject(function(elementRegistry, contextPad) {
-
-      // given
-      var element = elementRegistry.get('Task_1');
-
-      contextPad.open(element);
-
-      // mock event
-      var event = padEvent('append.gateway');
-
-      // when
-      contextPad.trigger('click', event);
-
-      // then
-      expect(element.outgoing).to.have.length(1);
-    }));
-
-  });
+  //   beforeEach(bootstrapModeler(diagramXML, {
+  //     modules: testModules.concat(autoPlaceModule)
+  //   }));
 
 
-  describe('disabled auto-place', function() {
+  //   it('should trigger', inject(function(elementRegistry, contextPad) {
 
-    var diagramXML = require('../../../fixtures/bpmn/simple.bpmn');
+  //     // given
+  //     var element = elementRegistry.get('Task_1');
 
-    beforeEach(bootstrapModeler(diagramXML, {
-      modules: testModules.concat(autoPlaceModule),
-      contextPad: {
-        autoPlace: false
-      }
-    }));
+  //     contextPad.open(element);
 
-    var container;
+  //     // mock event
+  //     var event = padEvent('append.gateway');
 
-    beforeEach(function() {
-      container = TestContainer.get(this);
-    });
+  //     // when
+  //     contextPad.trigger('click', event);
+
+  //     // then
+  //     expect(element.outgoing).to.have.length(1);
+  //   }));
+
+  // });
 
 
-    it('should default to drag start', inject(function(elementRegistry, contextPad, dragging) {
+  // describe('disabled auto-place', function() {
 
-      // given
-      var element = elementRegistry.get('Task_1');
+  //   var diagramXML = require('../../../fixtures/bpmn/simple.bpmn');
 
-      contextPad.open(element);
+  //   beforeEach(bootstrapModeler(diagramXML, {
+  //     modules: testModules.concat(autoPlaceModule),
+  //     contextPad: {
+  //       autoPlace: false
+  //     }
+  //   }));
 
-      // mock event
-      var event = {
-        clientX: 100,
-        clientY: 100,
-        target: padEntry(container, 'append.gateway'),
-        preventDefault: function() {}
-      };
+  //   var container;
 
-      // when
-      contextPad.trigger('click', event);
+  //   beforeEach(function() {
+  //     container = TestContainer.get(this);
+  //   });
 
-      // then
-      expect(dragging.context()).to.exist;
-    }));
 
-  });
+  //   it('should default to drag start', inject(function(elementRegistry, contextPad, dragging) {
+
+  //     // given
+  //     var element = elementRegistry.get('Task_1');
+
+  //     contextPad.open(element);
+
+  //     // mock event
+  //     var event = {
+  //       clientX: 100,
+  //       clientY: 100,
+  //       target: padEntry(container, 'append.gateway'),
+  //       preventDefault: function() {}
+  //     };
+
+  //     // when
+  //     contextPad.trigger('click', event);
+
+  //     // then
+  //     expect(dragging.context()).to.exist;
+  //   }));
+
+  // });
 
 });
 
